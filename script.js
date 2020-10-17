@@ -1,23 +1,29 @@
 let input = document.querySelector('input')
 const form = document.querySelector('form')
 const ul = document.querySelector('ul')
+const li = document.querySelector('li')
+
 
 
 // const deletes = document.querySelectorAll('.delete')
 
 form.addEventListener('click', submit)
 
+ul.addEventListener('click', removeEvent)
 
-
-function submit(e) {
-  e.preventDefault()
-  console.log('click')
-  if (input.value != '') {
-    addTask(input.value)
-    input.value = ''
-  }
+function removeEvent (e)  {
+  console.log('ul clicked')
+  console.log(e.target.classList.contains('delete'))
+  if(e.target.classList.contains('delete')) {
+    ul.removeChild(e.target.parentElement);
+    li.removeChild(li)
 }
-addTask = (task) => {
+}
+
+
+
+
+function addTask (task) {
   let delButton = document.createElement('button')
   let li = document.createElement('li')
   li.innerHTML = task
@@ -29,27 +35,18 @@ addTask = (task) => {
 
 }
 
-// function addTask(task) {
-// 	const toTo = {
-// 		task,
-// 		checked: false,
-// 		id: Date.now()
-// 	};
 
-// 	let li = document.createElement('li');
-// 	let btnDelete = document.createElement('button');
-// 	let btnComplete = document.createElement('button');
-// 	btnDelete.innerHTML = 'delete';
-// 	li.innerHTML = task;
-// 	console.log(li.innerHTML, task, toDo);
-// 	ul.appendChild(li, btnDelete, btnComplete);
-// }
+function submit(e) {
+  console.log(e.target.classList)
+  if (e.target.classList.contains('delete')) {
+    console.log('here')
+    node.parentNode.removeChild(node)
+  }
+  e.preventDefault()
+  console.log('click')
+  if (input.value != '') {
+    addTask(input.value)
+    input.value = ''
+  }
+}
 
-// add tasks
-// function addTask(task) {
-// 	let ul = document.querySelector('ul');
-// 	let li = document.createElement('li');
-// 	li.innerHTML = task;
-// 	ul.appendChild(li);
-// 	// document.querySelector('.tasksBoard').style.display = 'block';
-// }
