@@ -17,3 +17,6 @@ button {
 	width: 50px;
 	height: 30px;
 }
+li {
+	display: flex;
+}
