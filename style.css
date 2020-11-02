@@ -1,17 +1,22 @@
 * {
 	box-sizing: border-box;
+	/* margin: 0; */
+	/* padding: 0; */
 }
 
-body {
+.container {
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	flex-direction: column;
+	width: 500px;
+	margin: 0 auto;
 }
 
 ul {
 	list-style-type: none;
 	padding: 0;
+	width: 70%;
 }
 button {
 	width: 50px;
@@ -19,4 +24,15 @@ button {
 }
 li {
 	display: flex;
+	width: 70%;
+}
+.parentDiv {
+	display: flex;
+	justify-content: space-evenly;
+}
+/* .liNewClass {
+	width: 70%;
+} */
+input .checkBox {
+	margin: 10px;
 }
