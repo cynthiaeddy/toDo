@@ -3,12 +3,15 @@ const form = document.querySelector('form')
 const ul = document.querySelector('ul')
 const li = document.querySelector('li')
 let checkbox = document.querySelector('.checkbox');
+let todo_input
 
 
 
 
 /////// event listeners ////////////
-
+// c.addEventListener("change", function() {
+//   l.style.textDecoration = c.checked ? "line-through" : "none";
+// })
 form.addEventListener('click', submit)
 
 ul.addEventListener('click', deleteTask)
@@ -65,6 +68,9 @@ function deleteTask (e)  {
 
 
 function addTaskWithBoxes(task) {
+  // todo_input = task.querySelector("input[name='todo']")
+
+  console.log(todo_input)
   let key = Math.floor(ul.childNodes.length / 2) + 1
 
   parentDiv = document.createElement('div')
@@ -95,19 +101,67 @@ function addTaskWithBoxes(task) {
 
 
 function checkboxToggle(e) {
+
+
+  var listItem = this.parentNode;
+
   console.log(e.target, e.target.parentElement)
   let childEle = e.target
   let parentEle = e.target.parentElement
-  // console.log(parentEle .li)
+  // var editInput = parentEle.querySelector('input[type=text]');
+  let lineThrough = listItem.querySelector('li[class=liNewClass]')
+  // let doIt = lineThrough.innerText
+
+  console.log('parentEle', parentEle, 'lineThrough', lineThrough)
+
+
+  lineThrough.style.textDecoration = childEle.checked ? "line-through" : "none";
+  // if (childEle.checked) {
+  //   lineThrough.style.textDecoration = 'line-through'
+
+  // } else {
+  //   lineThrough.style.textDecoration = 'none'
+  // }
+
+  // if (childEle.checked) {
+  //   lineThrough.classList.add('line')
+
+  // } else {
+  //   lineThrough.classList.remove('line')
+  // }
+  //
+  // // lineThrough.classList('line') = childEle.checked ? true: false;
+
+  // doIt.style.textDecoration = 'linethrough'
+  // doIt.classList.add('line')
+  // lineThrough.classList.add('line')
+
+  // var todo_name = todo.querySelector(".tasks #item" + todo_item_id + " .todo-name");
   // console.log(parentDiv.contains('li'))
 
-  // console.log(childEle.id === parentEle.id, parentEle.innerText, parentDiv.classList.contains('liNewClass'))
-  console.log(childEle.checked)
-  if (childEle.id === parentEle.id) {
-  //   if (!parentEle.contains('button')) {
-  //     // console.log(parentEle.closest('.liClass'))
-      li.style.textDecoration = 'linethrough'
-    }
+  // // console.log(childEle.id === parentEle.id, parentEle.innerText, parentDiv.classList.contains('liNewClass'))
+  // console.log(childEle.checked)
+  // // if (childEle.checked) {
+  //   lineThrough.classList.add('line')
+
+    //   if (!parentEle.contains('button')) {
+      //     // console.log(parentEle.closest('.liClass'))
+      // doIt.classList.add('line')
+    // } else {
+
+    //   lineThrough.classList.remove('line')
+    //   // li.appendChild(lineThrough)
+
+
+  // }
+  // if (!childEle.checked) {
+  //   lineThrough.classList.remove('line')
+
+
+  // }
+    // li.appendChild(lineThrough)
+
+  // li.appendChild(lineThrough)
 
   // }
   // if (checkbox.checked) {

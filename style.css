@@ -36,3 +36,6 @@ li {
 input .checkBox {
 	margin: 10px;
 }
+.line {
+	text-decoration: line-through;
+}

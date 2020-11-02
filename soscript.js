@@ -3,6 +3,7 @@ window.onload = function(){
 
   var todo = document.getElementById("todo");
   var todo_form = todo.querySelector("#todo-form");
+
   todo_form.onsubmit = function(e){
     var todo_input = e.target.querySelector("input[name='todo']");
     var todo_name;
@@ -23,6 +24,8 @@ window.onload = function(){
       todo_check.setAttribute("class", "check fa fa-square");
       todo_check.dataset.id = todo_items;
       todo_check.dataset.checked = false;
+
+
       todo_check.onclick = function(e){
         var todo_item_id = e.target.dataset.id;
         var todo_name = todo.querySelector(".tasks #item" + todo_item_id + " .todo-name");
