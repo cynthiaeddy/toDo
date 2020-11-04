@@ -41,6 +41,8 @@ window.onload = function(){
       };
       item.appendChild(todo_check);
 
+
+
       todo_name = document.createElement("td");
       todo_name.setAttribute("class","todo-name");
       todo_name.textContent = todo_value;

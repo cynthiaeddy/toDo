@@ -1,7 +1,8 @@
 let input = document.querySelector('input')
 const form = document.querySelector('form')
 const ul = document.querySelector('ul')
-const li = document.querySelector('li')
+// const li = document.querySelector('li')
+let toDoItems = []
 // const parentDiv = document.querySelector('.parentDiv')
 
 /////// event listeners ////////////
@@ -17,78 +18,52 @@ ul.addEventListener('change', checkboxToggle)
 
 ////// grab input value, then pass to addTask function ///////
 
+function addToDo(text) {
+  const toDo = {
+    text,
+    checked: false,
+    id: Date.now()
+  }
+  // toDoItems.push(toDo)
+  // console.log(toDoItems)
+
+  renderToDo(toDoItems)
+}
+
 function submit(e) {
   e.preventDefault()
   console.log('click', input.value, e.target.value)
   if (input.value != '') {
-    addTaskWithBoxes(input.value)
+    addToDo(input.value)
     input.value = ''
+    input.focus()
   }
 }
 ////// create task and assign li and children keys ///////
 
-// function addTask(task) {
-//   let delButton = document.createElement('button')
-//   let li = document.createElement('li')
 
-//   let key = Math.floor(ul.childNodes.length / 2) + 1
-//   //// or can do classList.add - example delButton ////
-//   li.className = 'liClass parentEle'
-//   li.id = `${key}`
-//   delButton.id = `${key}`
+function renderToDo(toDo) {
+  console.log(toDo)
 
-
-// ///// two examples of dynamically creating checkboxes /////
-//   let checkBox = document.createElement("input");
-//   checkBox.setAttribute("type", "checkbox");
-//   checkBox.setAttribute("class", "checkbox");
-//   checkBox.setAttribute("id", `${key}`);
-
-//   let checkbox = document.createElement("div");
-//   checkbox.innerHTML = `<input class="checkbox" type="checkbox" id=${key} >`
-//   console.log(li, delButton, checkbox, checkBox)
-
-//   li.innerHTML = task
-//   delButton.innerText = 'delete';
-// 	delButton.classList.add('delete')
-//   console.log(task, delButton)
-//   ul.appendChild(li)
-//   li.appendChild(checkBox)
-//   li.appendChild(delButton)
-// }
-
-
-
-function addTaskWithBoxes(task) {
-
-  let key = Math.floor(ul.childNodes.length / 2) + 1
-  // id : Date.now()
-
-  parentDiv = document.createElement('div')
-  parentDiv.className = 'parentDiv'
-  parentDiv.id = `${key}`
+  const isChecked = toDo.checked ? 'done' : ""
 
   let li = document.createElement('li')
-  li.innerHTML = task
-  li.className = 'liNewClass'
-  li.id = `${key}`
+  // li.innerHTML = task
+  // li.className = 'liNewClass'
 
-  let delButton = document.createElement('button')
-  delButton.innerText = 'delete'
-  delButton.classList.add('delete')
-  delButton.id = `${key}`
+  li.setAttribute('class', `todo-item ${isChecked}`);
+  // Set the data-key attribute to the id of the todo
+  li.setAttribute('data-key', toDo.id);
+  // Set the contents of the `li` element create
 
-  let checkBox = document.createElement("input");
-  checkBox.setAttribute("type", "checkbox");
-  checkBox.setAttribute("class", "checkbox");
-  checkBox.setAttribute("id", `${key}`);
-
-
-  ul.appendChild(parentDiv)
-  parentDiv.appendChild(li)
-  parentDiv.appendChild(checkBox)
-  parentDiv.appendChild(delButton)
-
+  li.innerHTML = `
+  <input id="${toDo.id}" type="checkbox"/>
+  <label for="${toDo.id}" class="tick"></label>
+  <span>${toDo.text}</span>
+  <button class="delete-todo">
+  delete</button>
+`;
+  ul.appendChild(li)
 }
 
 function deleteTask(e) {
